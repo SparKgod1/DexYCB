@@ -25,6 +25,7 @@ camera_pattern = r"\b\d{12}\b"
 joint_ind = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 entri_pth = "F:\\DexYCB\\dataset\\dex-ycb-20210415\\calibration"
 data_pth = "F:\\DexYCB\\lx\\example\\dataset_3d"
+pkl_pth = "F:\\DexYCB\\lx\\example\\dataset"
 if not os.path.exists(data_pth):
     os.makedirs(data_pth)
 seq_id_old = None
@@ -34,7 +35,7 @@ for setup in ('s0', 's1', 's2', 's3'):
     for split in ('train', 'val', 'test'):
         name = '{}_{}'.format(setup, split)
         print(f'Dataset name: {name}')
-        dataset = np.load("dataset/{}.pkl".format(name), allow_pickle=True)
+        dataset = np.load("{}/{}.pkl".format(pkl_pth, name), allow_pickle=True)
         dataset_pth = os.path.join(data_pth, name)
         if not os.path.exists(dataset_pth):
             os.makedirs(dataset_pth)
